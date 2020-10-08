@@ -1,0 +1,32 @@
+{% extends "Layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/landing_style.css') }}">
+{% endblock styles %}
+{% block content %}
+<div class="top-spacing"></div>
+<p class="h1 mx-auto" style="width: 25rem;">Watermarking Tool</p>
+<div class="container-fluid">
+    <div class="jumbotron m-3">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-light btn-lg btn-block" onclick="embed_watermark()">Embed Watermark</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-light btn-lg btn-block" onclick="extract_watermark()">Extract Watermark</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block addScript %}
+<script>
+    function embed_watermark()
+    {
+        window.location.href="{{ url_for('embed') }}";
+    }
+    function extract_watermark()
+    {
+        window.location.href="{{ url_for('extract') }}";
+    }
+</script>
+{% endblock addScript %}

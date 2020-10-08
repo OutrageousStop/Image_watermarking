@@ -1,0 +1,19 @@
+{% extends "Layout.html" %}
+{% block content %}
+<div class="jumbotron text-center mt-3">
+    <h1> Image Watermark Extractor </h1>
+</div>
+<form action="{{ url_for('extract_image') }}" method="POST" enctype="multipart/form-data">
+    <div class="container pt-3">
+        <h1>Upload Image</h1>
+        <img src="" class="round" name="image_preview" id="image_preview">
+        <input type="file" name="image" id="image" required>
+        <div class="pt-4">
+            <button type="submit" class="btn btn-light btn-lg border">Extract</button>
+        </div>
+    </div>
+</form>
+{% endblock content %}
+{% block addScript %}
+<script src="{{ url_for('static', filename='scripts/image_preview_extractor.js') }}"></script>
+{% endblock addScript %}

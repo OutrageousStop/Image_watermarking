@@ -1,0 +1,34 @@
+{% extends "Layout.html" %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/image_preview_style.css') }}">
+{% endblock styles %}
+{% block content %}
+<div class="jumbotron text-center mt-3">
+  <h1> Image Watermark Embedder</h1>
+</div>
+<form action="{{ url_for('embed_image') }}" method="POST" enctype="multipart/form-data">
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-sm-4 border text-center">
+      <h1>Original Image</h1>
+      <img src="" class="round" name="original_preview" id="original_preview">
+      <input type="file" name="original_image" id="original_image" required>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 border text-center">
+      <h1>Watermark</h1>
+      <img src="" class="round" name="watermark_preview" id="watermark_preview">
+      <input type="file" name="watermark_image" id="watermark_image" required>
+    </div>
+  </div>
+</div>
+<div class="container pt-4 mt-4">
+  <div class="text-center">
+  <button type="submit" class="btn btn-light btn-lg border">Embed</button>
+  </div>
+</div>
+</form>
+{% endblock content %}
+{% block addScript %}
+<script src="{{ url_for('static', filename='scripts/image_preview.js') }}"></script>
+{% endblock addScript %}
