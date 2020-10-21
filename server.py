@@ -16,7 +16,7 @@ def embed_image():
         original_image.save('./temp/original_image')
         watermark_image.save('./temp/watermark_image')
         watermark_util.w2d()
-        return send_file(os.path.join(dirname, 'result/image_with_watermark.jpg'))
+        return send_file(os.path.join(dirname, 'result/image_with_watermark.jpg'), as_attachment=True)
 
 @app.route('/embed', methods=['GET'])
 def embed():
@@ -36,7 +36,7 @@ def extract_image():
         image = request.files['image']
         image.save('./temp/toextractfrom')
         watermark_util.extractWM('toextractfrom')
-        return send_file('./result/recovered_watermark.jpg')
+        return send_file('./result/recovered_watermark.jpg', as_attachment=True)
     return "hello"
 
 

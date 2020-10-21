@@ -41,17 +41,15 @@ def embed_mod4(coeff_image, coeff_watermark):
     return coeff_image
 
             
-    
 def embed_watermark(watermark_array, orig_image):
     watermark_array_size = watermark_array[0].__len__()
     watermark_flat = watermark_array.ravel()
     ind = 0
-
     for x in range (0, orig_image.__len__(), 8):
         for y in range (0, orig_image.__len__(), 8):
             if ind < watermark_flat.__len__():
                 subdct = orig_image[x:x+8, y:y+8]
-                subdct[5][5] = watermark_flat[ind]
+                subdct[4][4] = watermark_flat[ind]
                 orig_image[x:x+8, y:y+8] = subdct
                 ind += 1 
 
@@ -90,7 +88,7 @@ def get_watermark(dct_watermarked_coeff, watermark_size):
     for x in range (0, dct_watermarked_coeff.__len__(), 8):
         for y in range (0, dct_watermarked_coeff.__len__(), 8):
             coeff_slice = dct_watermarked_coeff[x:x+8, y:y+8]
-            subwatermarks.append(coeff_slice[5][5])
+            subwatermarks.append(coeff_slice[4][4])
 
     watermark = np.array(subwatermarks).reshape(watermark_size, watermark_size)
 
